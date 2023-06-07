@@ -7,7 +7,6 @@ function App() {
   const [time, setTime] = useState(new Date())
   const [inputDate, setInputDate] = useState('1 Jan 2023');
   const [birthDate, setBirthDate] = useState(new Date("2023-12-06").getTime());
-
   //Handler
   const onChangeHandler = (e) => {
     setInputDate(e.target.value);
@@ -34,12 +33,14 @@ function App() {
     console.log("day...", days, "hrs...", hours, "min...", minutes, "sec...", seconds)
     return [days, hours, minutes, seconds]
   }
+  const { days, hours, minutes, seconds } = getCountDown()
+  const [result, setResult] = useState({ day: days, hour: hours, minute: minutes, second: seconds })
 
   useEffect(() => {
     const intervalTask = setInterval(() => {
       setTime(new Date())
       getCountDown(birthDate)
-
+      setResult({ day: days, hour: hours, minute: minutes, second: seconds })
     }, 1000) //1000 millisecond = 1 second
     return () => clearInterval(intervalTask)
   }, [])
@@ -49,10 +50,15 @@ function App() {
       <h1>Countdown</h1>
       <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi, aliquam ipsam ipsum iure possimus sint quia culpa doloremque nihil recusandae?</h4>
       <div className='countdown'>
-        <div >{ }</div>
-        <div>{birthDate.hours}</div>
-        <div>{birthDate.minutes}</div>
-        <div>{birthDate.seconds}</div>
+        <div>{result.day}</div>
+        <div>{result.hour}</div>
+        <div>{result.minute}</div>
+        <div>{result.second}</div>
+
+        {/* <div >{days}</div>
+        <div>{hours}</div>
+        <div>{minutes}</div>
+        <div>{seconds}</div> */}
 
       </div>
       <section className='input-container'>
