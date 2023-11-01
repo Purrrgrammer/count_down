@@ -1,20 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.container>* {
-    margin: auto;
-    margin: 1rem 0;
-    text-align: center;
-    align-items: center;
+.container > * {
+  margin: auto;
+  margin: 1rem 0;
+  text-align: center;
+  align-items: center;
 }
 
 .countdown {
-    display: flex;
+  display: flex;
 }
 
-.countdown>* {
-    background-color: red;
-    margin: 0 10px;
+.countdown > * {
+  background-color: red;
+  margin: 0 10px;
 }
